@@ -1,0 +1,7 @@
+<tr>
+  <td><%= product.id %></td>
+  <td><%= product.name %></td>
+  <td id="desc-<%= product.id %>"><%= truncate product.description %></td>
+  <td id="inventory-<%= product.id %>"></td>
+  <td><button class="js-more" data-id="<%= product.id %>">More Info</button></td>
+</tr>

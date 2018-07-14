@@ -1,1 +1,25 @@
+<h1>Products</h1>
+<table>
+  <tr>
+    <th>Product Id</th>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  <%= render(@products) || "No Products"%>
+</table>
 
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-more").on('click', function() {
+    // get the id from the data attribute
+    var id = $(this).data("id");
+    $.get("/products/" + id + "/description", function(data) {
+      $("#desc-" + id).text(data);
+    });
+    $.get("/products/" + id + "/inventory", function(data) {
+      $("#inventory-" + id).text(data == 'true' ? "Available" : "Sold Out");
+    });
+  });
+});
+</script>
